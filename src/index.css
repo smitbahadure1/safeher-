@@ -2,9 +2,26 @@
 @import "leaflet/dist/leaflet.css";
 
 @theme {
-  --color-primary: #ff3366;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --color-primary-light: #ff5c85;
-  --color-secondary: #94a3b8;
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --color-success: #00e676;
   --color-purple: #8b5cf6;
   --color-danger: #f43f5e;
@@ -20,16 +37,32 @@
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
 
-  --primary: #ff3366; /* Bright Pink */
+  --background: #12101a;
+  --foreground: #ffffff;
+  --card: #1b1826;
+  --card-foreground: #ffffff;
+  --popover: #1b1826;
+  --popover-foreground: #ffffff;
+  --primary: #ff3366;
+  --primary-foreground: #ffffff;
   --primary-light: #ff5c85;
+  --secondary: #1b1826;
+  --secondary-foreground: #ffffff;
+  --muted: #1e1b2e;
+  --muted-foreground: #94a3b8;
+  --accent: #262136;
+  --accent-foreground: #ffffff;
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
+  --border: #2c283a;
+  --input: #2c283a;
+  --ring: #ff3366;
 
   --success: #00e676; /* Bright Mint Green */
   --success-bg: rgba(0, 230, 118, 0.1);
 
   --purple: #8b5cf6; /* Soft Purple */
   --purple-bg: rgba(139, 92, 246, 0.15);
-
-  --border: #2c283a; /* Very subtle card border */
 
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
