@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
-import { Shield, ShieldAlert, MapPin, Activity } from "lucide-react";
+import { Shield, MapPin, Activity } from "lucide-react";
 
 const userIcon = L.divIcon({
   className: "bg-transparent",
-  html: `<div class="w-8 h-8 rounded-full bg-[#ff3366] flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,51,102,0.8)] border-2 border-white animate-pulse"></div>`,
+  html: `<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white border-2 border-white animate-pulse"></div>`,
   iconSize: [32, 32],
   iconAnchor: [16, 16],
 });
@@ -51,10 +51,10 @@ export default function Track() {
   }, []);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-100px)] w-full max-w-[1200px] mx-auto gap-4">
+    <div className="flex flex-col h-[calc(100vh-100px)] w-full max-w-300 mx-auto gap-4">
       <div className="bg-[#1b1826] border border-white/10 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-[#ff3366]/20 flex items-center justify-center text-[#ff3366]">
+          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
             {coordinates ? (
               <Activity size={24} className="animate-pulse" />
             ) : (
@@ -67,8 +67,8 @@ export default function Track() {
             </h1>
             <p className="text-secondary text-sm">
               {coordinates ? (
-                <span className="text-[#00e676] flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#00e676] animate-pulse"></span>{" "}
+                <span className="text-success flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-success animate-pulse"></span>{" "}
                   Receiving live GPS data
                 </span>
               ) : (
@@ -97,7 +97,11 @@ export default function Track() {
             <Marker position={coordinates} icon={userIcon}>
               <Popup className="dark-popup">
                 <div className="font-bold text-primary">Live User Location</div>
-                <div className="text-xs">Updated just now</div>
+                <div className="text-xs">
+                  {lastUpdated
+                    ? `Updated ${new Date(lastUpdated).toLocaleTimeString()}`
+                    : "Updated just now"}
+                </div>
               </Popup>
             </Marker>
           </MapContainer>

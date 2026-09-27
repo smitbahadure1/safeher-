@@ -89,7 +89,7 @@ export default function Contacts() {
     c.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
   return (
-    <div className="flex flex-col max-w-[1400px] mx-auto w-full gap-8">
+    <div className="flex flex-col max-w-350 mx-auto w-full gap-8">
       {/* Top Header Area */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -98,7 +98,7 @@ export default function Contacts() {
           </p>
           <h1 className="text-4xl font-bold text-white mb-2 tracking-tight">
             People who have{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff3366] to-[#ff5c85]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-primary-light">
               your back
             </span>
           </h1>
@@ -106,7 +106,7 @@ export default function Contacts() {
             They'll receive your SOS alerts and check-in notifications.
           </p>
         </div>
-        <button className="bg-[#ff3366] hover:bg-[#ff5c85] text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition shadow-[0_4px_15px_rgba(255,51,102,0.3)]">
+        <button className="bg-primary hover:bg-primary-light text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition">
           <Plus size={18} /> Add Contact
         </button>
       </div>
@@ -122,8 +122,8 @@ export default function Contacts() {
                 Your contacts ({filteredContacts.length})
               </h2>
 
-              <div className="flex items-center w-full sm:w-64 bg-[#12101a] border border-white/10 rounded-lg px-3 focus-within:border-[#8b5cf6]">
-                <Search size={16} className="text-[#94a3b8] flex-shrink-0" />
+              <div className="flex items-center w-full sm:w-64 bg-[#12101a] border border-white/10 rounded-lg px-3 focus-within:border-purple">
+                <Search size={16} className="text-[#94a3b8] shrink-0" />
                 <input
                   type="text"
                   value={searchQuery}
@@ -135,7 +135,7 @@ export default function Contacts() {
             </div>
 
             {/* Table */}
-            <div className="overflow-x-auto min-h-[200px]">
+            <div className="overflow-x-auto min-h-50">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-white/10 text-xs text-[#94a3b8] font-semibold uppercase tracking-wider">
@@ -169,11 +169,11 @@ export default function Contacts() {
                     filteredContacts.map((contact, idx) => (
                       <tr
                         key={idx}
-                        className="border-b border-white/5 hover:bg-white/[0.02] transition"
+                        className="border-b border-white/5 hover:bg-white/2 transition"
                       >
                         <td className="py-4 px-6">
                           <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-full bg-[#ff3366] flex items-center justify-center text-white font-bold">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
                               {contact.initials}
                             </div>
                             <span className="font-bold text-white">
@@ -189,10 +189,10 @@ export default function Contacts() {
                         </td>
                         <td className="py-4 px-6">
                           <div
-                            className={`flex items-center gap-2 text-sm font-medium ${contact.status === "Active" ? "text-[#00e676]" : "text-[#94a3b8]"}`}
+                            className={`flex items-center gap-2 text-sm font-medium ${contact.status === "Active" ? "text-success" : "text-[#94a3b8]"}`}
                           >
                             <div
-                              className={`w-2 h-2 rounded-full ${contact.status === "Active" ? "bg-[#00e676]" : "bg-[#94a3b8]"}`}
+                              className={`w-2 h-2 rounded-full ${contact.status === "Active" ? "bg-success" : "bg-[#94a3b8]"}`}
                             ></div>{" "}
                             {contact.status}
                           </div>
@@ -211,9 +211,9 @@ export default function Contacts() {
           </div>
 
           {/* Promo Card */}
-          <div className="card bg-gradient-to-r from-[#1b1826] to-[#12101a] border border-white/5 p-6 rounded-xl flex items-center justify-between">
+          <div className="card bg-linear-to-r from-[#1b1826] to-[#12101a] border border-white/5 p-6 rounded-xl flex items-center justify-between">
             <div className="flex items-center gap-5">
-              <div className="text-[#8b5cf6]">
+              <div className="text-purple">
                 <Users size={36} />
               </div>
               <div>
@@ -226,7 +226,7 @@ export default function Contacts() {
                 </p>
               </div>
             </div>
-            <button className="text-[#8b5cf6] text-sm font-semibold flex items-center gap-1 hover:text-[#a78bfa] transition whitespace-nowrap">
+            <button className="text-purple text-sm font-semibold flex items-center gap-1 hover:text-[#a78bfa] transition whitespace-nowrap">
               Learn more <ChevronRight size={16} />
             </button>
           </div>
@@ -248,7 +248,7 @@ export default function Contacts() {
                 <label className="block text-sm font-bold text-white mb-2">
                   Full name
                 </label>
-                <div className="w-full bg-[#12101a] border border-white/10 rounded-lg focus-within:border-[#8b5cf6] transition flex items-center">
+                <div className="w-full bg-[#12101a] border border-white/10 rounded-lg focus-within:border-purple transition flex items-center">
                   <input
                     type="text"
                     value={name}
@@ -264,7 +264,7 @@ export default function Contacts() {
                 <label className="block text-sm font-bold text-white mb-2">
                   Relationship
                 </label>
-                <div className="relative w-full bg-[#12101a] border border-white/10 rounded-lg focus-within:border-[#8b5cf6] transition">
+                <div className="relative w-full bg-[#12101a] border border-white/10 rounded-lg focus-within:border-purple transition">
                   <select
                     value={relationship}
                     onChange={(e) => setRelationship(e.target.value)}
@@ -373,7 +373,7 @@ export default function Contacts() {
 
             <button
               onClick={handleSaveContact}
-              className="w-full bg-[#ff3366] hover:bg-[#ff5c85] text-white font-bold py-3.5 rounded-xl transition mt-8 shadow-[0_4px_15px_rgba(255,51,102,0.3)]"
+              className="w-full bg-primary hover:bg-primary-light text-white font-bold py-3.5 rounded-xl transition mt-8"
             >
               Save Contact
             </button>

@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center text-center mt-4">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-brand mb-2 flex items-center justify-center gap-2">
-          <ShieldAlert size={32} /> SafeHer
+          <img src="/vite.svg" alt="SafeHer Logo" className="w-8 h-8" /> SafeHer
         </h1>
         <h2 className="text-lg font-semibold text-primary mb-2">
           Technology that helps you stay connected and prepared.

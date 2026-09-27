@@ -5,16 +5,11 @@ import {
   Battery,
   Signal,
   Users,
-  ChevronRight,
   Bell,
   Square,
   Moon,
-  Cloud,
-  Plus,
-  Minus,
   Send,
   MapPin,
-  Home,
   Activity,
 } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -23,7 +18,7 @@ import { Link } from "react-router-dom";
 
 const userIcon = L.divIcon({
   className: "bg-transparent",
-  html: `<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,51,102,0.8)] border-2 border-white animate-pulse"></div>`,
+  html: `<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white border-2 border-white animate-pulse"></div>`,
   iconSize: [32, 32],
   iconAnchor: [16, 16],
 });
@@ -66,7 +61,7 @@ export default function Journey() {
 
   if (!activeJourney) {
     return (
-      <div className="flex flex-col gap-4 max-w-[1200px] mx-auto w-full h-[600px] items-center justify-center">
+      <div className="flex flex-col gap-4 max-w-300 mx-auto w-full h-150 items-center justify-center">
         <div className="card p-12 flex flex-col items-center justify-center text-center border border-white/5 bg-[#1b1826] w-full max-w-2xl">
           <Activity size={64} className="text-secondary mb-6 opacity-30" />
           <h2 className="text-3xl font-bold text-white mb-3">
@@ -78,7 +73,7 @@ export default function Journey() {
           </p>
           <button
             onClick={() => setActiveJourney(true)}
-            className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-10 rounded-xl transition shadow-[0_4px_15px_rgba(255,51,102,0.3)] text-lg"
+            className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-10 rounded-xl transition text-lg"
           >
             Start a New Trip
           </button>
@@ -88,11 +83,11 @@ export default function Journey() {
   }
 
   return (
-    <div className="flex flex-col gap-4 max-w-[1200px] mx-auto w-full">
+    <div className="flex flex-col gap-4 max-w-300 mx-auto w-full">
       {/* Existing UI with empty state data */}
 
       {/* Large Map Area */}
-      <div className="card p-0 relative overflow-hidden h-[400px] border border-white/5 rounded-2xl flex-shrink-0">
+      <div className="card p-0 relative overflow-hidden h-100 border border-white/5 rounded-2xl shrink-0">
         {/* Dark Map Background */}
         <div className="absolute inset-0 bg-[#0d0c14] z-0">
           {coordinates ? (
@@ -126,7 +121,7 @@ export default function Journey() {
         {/* Map UI Elements */}
 
         {/* Top Left Floating Status */}
-        <div className="absolute top-4 left-4 bg-[rgba(27,24,38,0.9)] backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 shadow-lg z-[1000] pointer-events-auto">
+        <div className="absolute top-4 left-4 bg-[rgba(27,24,38,0.9)] backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 shadow-lg z-1000 pointer-events-auto">
           <div className="flex items-center gap-2 mb-1">
             <Users size={16} className="text-purple" />
             <span className="font-bold text-white text-sm">
@@ -134,7 +129,7 @@ export default function Journey() {
             </span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse shadow-[0_0_8px_rgba(0,230,118,0.8)]"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></div>
             <span className="text-xs text-secondary">
               Your live location is being shared in real time
             </span>
@@ -142,7 +137,7 @@ export default function Journey() {
         </div>
 
         {/* Share Link Button */}
-        <div className="absolute top-4 right-4 z-[1000] pointer-events-auto">
+        <div className="absolute top-4 right-4 z-1000 pointer-events-auto">
           <button
             onClick={() => {
               navigator.clipboard.writeText(window.location.origin + "/track");
@@ -157,14 +152,14 @@ export default function Journey() {
         </div>
 
         {/* Bottom Left Weather */}
-        <div className="absolute bottom-4 left-4 bg-[rgba(27,24,38,0.9)] backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg z-[1000] flex items-center gap-3">
+        <div className="absolute bottom-4 left-4 bg-[rgba(27,24,38,0.9)] backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg z-1000 flex items-center gap-3">
           <Moon size={14} className="text-blue-200" fill="currentColor" />
           <span className="text-xs text-white font-semibold">--°C</span>
           <span className="text-xs text-secondary">Loading...</span>
         </div>
 
         {/* Right Side Map Controls */}
-        <div className="absolute right-4 bottom-4 flex flex-col gap-2 z-[1000] pointer-events-auto">
+        <div className="absolute right-4 bottom-4 flex flex-col gap-2 z-1000 pointer-events-auto">
           <button className="bg-[rgba(27,24,38,0.9)] backdrop-blur-md rounded-lg border border-white/10 shadow-lg p-2.5 text-white hover:bg-white/10 transition mt-2 flex flex-col items-center justify-center">
             <Send size={18} className="transform -rotate-45" />
           </button>
@@ -254,7 +249,7 @@ export default function Journey() {
 
         <Link
           to="/sos"
-          className="flex-[2] bg-gradient-to-br from-[#ff3366] to-[#ff1a4d] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(255,51,102,0.4)] text-white rounded-xl py-4 flex flex-row items-center justify-center gap-3 shadow-[0_4px_15px_rgba(255,51,102,0.3)] transition"
+          className="flex-2 bg-linear-to-br from-[#ff3366] to-[#ff1a4d] hover:-translate-y-0.5 text-white rounded-xl py-4 flex flex-row items-center justify-center gap-3 transition"
         >
           <Bell size={20} fill="currentColor" />
           <span className="font-bold text-lg tracking-wide">SOS</span>

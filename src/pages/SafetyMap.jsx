@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Search,
   Navigation,
-  Plus,
-  Minus,
   TriangleAlert,
   Lightbulb,
   ShieldCheck,
@@ -12,29 +9,19 @@ import {
   Users,
   ChevronDown,
   LayoutGrid,
-  MapPin,
 } from "lucide-react";
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
-  Circle,
   useMap,
 } from "react-leaflet";
 import L from "leaflet";
 
-// Custom icons
-const dangerIcon = L.divIcon({
-  className: "bg-transparent",
-  html: `<div class="w-6 h-6 rounded-full bg-danger flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,51,102,0.6)] border-2 border-white"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div>`,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-});
-
 const userIcon = L.divIcon({
   className: "bg-transparent",
-  html: `<div class="w-6 h-6 rounded-full bg-purple flex items-center justify-center text-white shadow-[0_0_15px_rgba(139,92,246,0.8)] border-2 border-white animate-pulse"></div>`,
+  html: `<div class="w-6 h-6 rounded-full bg-purple flex items-center justify-center text-white border-2 border-white animate-pulse"></div>`,
   iconSize: [24, 24],
   iconAnchor: [12, 12],
 });
@@ -51,7 +38,7 @@ function MapUpdater({ coordinates }) {
 }
 
 export default function SafetyMap() {
-  const [reports, setReports] = useState([]);
+  const [reports] = useState([]);
   const [coordinates, setCoordinates] = useState(null);
   const [mapCenter, setMapCenter] = useState([40.7128, -74.006]); // Default New York
 
@@ -68,9 +55,9 @@ export default function SafetyMap() {
     }
   }, []);
   return (
-    <div className="flex flex-col lg:flex-row gap-6 max-w-[1400px] mx-auto w-full">
+    <div className="flex flex-col lg:flex-row gap-6 max-w-350 mx-auto w-full">
       {/* Left Sidebar */}
-      <div className="w-full lg:w-[320px] flex flex-col gap-6 flex-shrink-0">
+      <div className="w-full lg:w-[320px] flex flex-col gap-6 shrink-0">
         {/* Map Filters & Actions */}
         <div className="card p-0 flex flex-col overflow-hidden">
           <div className="p-6 pb-4 border-b border-white/5">
@@ -123,7 +110,7 @@ export default function SafetyMap() {
           </div>
 
           <div className="p-4 pt-1">
-            <button className="w-full py-3.5 bg-gradient-to-r from-primary to-primary-light text-white font-bold rounded-xl shadow-[0_4px_15px_rgba(255,51,102,0.3)] hover:shadow-[0_6px_20px_rgba(255,51,102,0.4)] transition flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
+            <button className="w-full py-3.5 bg-linear-to-r from-primary to-primary-light text-white font-bold rounded-xl transition flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
               <PlusCircle size={18} />
               Report Incident
             </button>
@@ -131,7 +118,7 @@ export default function SafetyMap() {
         </div>
 
         {/* Promo Card */}
-        <div className="card p-6 rounded-xl flex flex-col gap-4 relative overflow-hidden bg-gradient-to-b from-[#1b1826] to-[#16141f]">
+        <div className="card p-6 rounded-xl flex flex-col gap-4 relative overflow-hidden bg-linear-to-b from-[#1b1826] to-[#16141f]">
           <div className="text-purple">
             <Users size={32} />
           </div>
@@ -150,7 +137,7 @@ export default function SafetyMap() {
       {/* Right Main Area */}
       <div className="flex-1 flex flex-col gap-6">
         {/* Map Container */}
-        <div className="card p-0 relative overflow-hidden h-[500px] border border-white/5 rounded-2xl flex-shrink-0 bg-[#0d0c14] z-0">
+        <div className="card p-0 relative overflow-hidden h-125 border border-white/5 rounded-2xl shrink-0 bg-[#0d0c14] z-0">
           <MapContainer
             center={mapCenter}
             zoom={14}
@@ -172,7 +159,7 @@ export default function SafetyMap() {
                 </Popup>
               </Marker>
             ) : (
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1000] bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold border border-white/10 flex items-center gap-2 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1000 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold border border-white/10 flex items-center gap-2 pointer-events-none">
                 <div className="w-2 h-2 rounded-full bg-purple animate-pulse"></div>
                 Finding your location...
               </div>
@@ -182,14 +169,14 @@ export default function SafetyMap() {
           {/* Map UI Overlays */}
 
           {/* Controls Right */}
-          <div className="absolute top-6 right-6 z-[1000] flex gap-3 pointer-events-auto">
+          <div className="absolute top-6 right-6 z-1000 flex gap-3 pointer-events-auto">
             <button className="bg-[rgba(27,24,38,0.9)] backdrop-blur-md border border-white/10 rounded-full py-2 px-4 flex items-center gap-2 text-sm text-white font-medium hover:bg-white/10 transition shadow-lg">
               <Navigation size={14} className="text-secondary" /> My Location
             </button>
           </div>
 
           {/* Legend */}
-          <div className="absolute bottom-6 right-6 bg-[rgba(27,24,38,0.9)] backdrop-blur-md rounded-full border border-white/10 px-4 py-3 flex items-center gap-4 shadow-xl z-[1000] pointer-events-auto">
+          <div className="absolute bottom-6 right-6 bg-[rgba(27,24,38,0.9)] backdrop-blur-md rounded-full border border-white/10 px-4 py-3 flex items-center gap-4 shadow-xl z-1000 pointer-events-auto">
             <div className="flex items-center gap-2 text-xs text-white">
               <div className="w-5 h-5 rounded-full bg-danger flex items-center justify-center text-white">
                 <TriangleAlert size={10} fill="currentColor" />
@@ -231,7 +218,7 @@ export default function SafetyMap() {
             </button>
           </div>
 
-          <div className="flex flex-col min-h-[150px]">
+          <div className="flex flex-col min-h-37.5">
             {reports.length === 0 ? (
               <div className="p-8 flex flex-col items-center justify-center text-center text-secondary">
                 <LayoutGrid size={32} className="mb-3 opacity-50" />
@@ -246,7 +233,7 @@ export default function SafetyMap() {
               reports.map((report, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start justify-between p-6 border-b border-white/5 hover:bg-white/[0.02] transition cursor-pointer"
+                  className="flex items-start justify-between p-6 border-b border-white/5 hover:bg-white/2 transition cursor-pointer"
                 >
                   {/* Render reports here when data exists */}
                 </div>

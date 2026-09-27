@@ -6,7 +6,6 @@ export default function CheckIn() {
   const [isActive, setIsActive] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [duration, setDuration] = useState("15");
-  const [customMinutes, setCustomMinutes] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
   const navigate = useNavigate();
 

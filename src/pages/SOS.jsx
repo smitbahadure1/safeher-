@@ -41,11 +41,11 @@ export default function SOS() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] max-w-2xl mx-auto w-full px-4">
       {status === "counting" && (
-        <div className="card w-full border-[#ff3366]/30 bg-[#ff3366]/10 flex flex-col items-center py-16 px-6 text-center shadow-[0_0_50px_rgba(255,51,102,0.15)] relative overflow-hidden">
-          <div className="absolute inset-0 bg-[#ff3366]/10 animate-pulse pointer-events-none"></div>
+        <div className="card w-full border-primary/30 bg-primary/10 flex flex-col items-center py-16 px-6 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-primary/10 animate-pulse pointer-events-none"></div>
 
-          <div className="w-24 h-24 rounded-full bg-[#ff3366]/20 flex items-center justify-center mb-6 relative z-10">
-            <div className="w-16 h-16 rounded-full bg-[#ff3366] flex items-center justify-center shadow-[0_0_30px_rgba(255,51,102,0.8)] animate-ping absolute"></div>
+          <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center mb-6 relative z-10">
+            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center animate-ping absolute"></div>
             <ShieldAlert size={36} className="text-white relative z-10" />
           </div>
 
@@ -56,10 +56,7 @@ export default function SOS() {
             Alerting emergency contacts in
           </p>
 
-          <div
-            className="text-8xl font-black text-white mb-12 tabular-nums tracking-tighter relative z-10"
-            style={{ textShadow: "0 0 20px rgba(255,51,102,0.8)" }}
-          >
+          <div className="text-8xl font-black text-white mb-12 tabular-nums tracking-tighter relative z-10">
             00:0{countdown}
           </div>
 
@@ -72,7 +69,7 @@ export default function SOS() {
             </button>
             <button
               onClick={handleTriggerNow}
-              className="flex-[2] bg-[#ff3366] hover:bg-[#ff5c85] text-white font-bold py-4 rounded-xl shadow-[0_4px_15px_rgba(255,51,102,0.4)] transition uppercase tracking-wider"
+              className="flex-2 bg-primary hover:bg-primary-light text-white font-bold py-4 rounded-xl transition uppercase tracking-wider"
             >
               Trigger Immediately
             </button>
@@ -81,14 +78,14 @@ export default function SOS() {
       )}
 
       {status === "active" && (
-        <div className="card w-full border-[#00e676]/30 bg-[#1b1826] flex flex-col items-center py-12 px-6 text-center shadow-[0_0_50px_rgba(0,230,118,0.1)]">
-          <div className="w-20 h-20 rounded-full bg-[#00e676]/20 flex items-center justify-center mb-6">
-            <div className="w-12 h-12 rounded-full bg-[#00e676] flex items-center justify-center shadow-[0_0_20px_rgba(0,230,118,0.6)]">
+        <div className="card w-full border-success/30 bg-[#1b1826] flex flex-col items-center py-12 px-6 text-center">
+          <div className="w-20 h-20 rounded-full bg-success/20 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-full bg-success flex items-center justify-center">
               <CheckCircle size={28} className="text-white" />
             </div>
           </div>
-          <div className="bg-[#ff3366]/20 border border-[#ff3366]/50 rounded-xl py-2 px-4 mb-6 inline-block">
-            <p className="text-[#ff3366] font-bold text-xs uppercase tracking-widest">
+          <div className="bg-primary/20 border border-primary/50 rounded-xl py-2 px-4 mb-6 inline-block">
+            <p className="text-primary font-bold text-xs uppercase tracking-widest">
               🚨 DEMO MODE ACTIVE 🚨
             </p>
           </div>
@@ -100,7 +97,7 @@ export default function SOS() {
 
           <div className="w-full space-y-3 mb-8 text-left">
             <div className="bg-[#12101a] border border-white/5 p-4 rounded-xl flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#8b5cf6]/20 flex items-center justify-center text-[#8b5cf6]">
+              <div className="w-10 h-10 rounded-full bg-purple/20 flex items-center justify-center text-purple">
                 <Users size={20} />
               </div>
               <div>
@@ -116,7 +113,7 @@ export default function SOS() {
             </div>
 
             <div className="bg-[#12101a] border border-white/5 p-4 rounded-xl flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#00e676]/20 flex items-center justify-center text-[#00e676]">
+              <div className="w-10 h-10 rounded-full bg-success/20 flex items-center justify-center text-success">
                 <MapPin size={20} />
               </div>
               <div>
@@ -137,7 +134,7 @@ export default function SOS() {
             </button>
             <button
               onClick={handleCancel}
-              className="bg-transparent border border-[#ff3366]/50 hover:bg-[#ff3366]/10 text-[#ff3366] font-bold py-4 rounded-xl transition flex flex-col items-center justify-center gap-2"
+              className="bg-transparent border border-primary/50 hover:bg-primary/10 text-primary font-bold py-4 rounded-xl transition flex flex-col items-center justify-center gap-2"
             >
               <X size={24} />
               <span className="text-xs">End SOS</span>

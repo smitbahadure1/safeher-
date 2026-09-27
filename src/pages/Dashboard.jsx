@@ -3,15 +3,12 @@ import { Link } from "react-router-dom";
 import {
   Bell,
   MapPin,
-  Navigation,
-  Shield,
   Users,
   Clock,
   Flame,
   Check,
   ChevronRight,
   Phone,
-  ShieldAlert,
   Car,
   Map as MapIcon,
   Activity,
@@ -20,7 +17,6 @@ import {
   MapContainer,
   TileLayer,
   Marker,
-  Popup,
   Circle,
   useMap,
 } from "react-leaflet";
@@ -31,7 +27,7 @@ import { doc, getDoc } from "firebase/firestore";
 // Custom User Icon
 const userIcon = L.divIcon({
   className: "bg-transparent",
-  html: `<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,51,102,0.8)] border-2 border-white animate-pulse"></div>`,
+  html: `<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white border-2 border-white animate-pulse"></div>`,
   iconSize: [24, 24],
   iconAnchor: [12, 12],
 });
@@ -160,7 +156,7 @@ export default function Dashboard() {
           </p>
           <div className="flex items-center gap-2 text-sm text-secondary">
             <div
-              className={`w-2 h-2 rounded-full ${userData.contactsShared > 0 ? "bg-success shadow-[0_0_8px_rgba(0,230,118,0.6)]" : "bg-secondary"}`}
+              className={`w-2 h-2 rounded-full ${userData.contactsShared > 0 ? "bg-success" : "bg-secondary"}`}
             ></div>
             {userData.contactsShared > 0
               ? `Your location is being shared with ${userData.contactsShared} trusted contacts`
@@ -175,7 +171,7 @@ export default function Dashboard() {
         <div className="sos-panel">
           <Link
             to="/sos"
-            className="bg-gradient-to-br from-[#ff3366] to-[#ff1a4d] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(255,51,102,0.4)] text-white rounded-xl p-4 font-bold flex flex-col items-center justify-center gap-1 w-full shadow-[0_4px_15px_rgba(255,51,102,0.3)] transition"
+            className="bg-linear-to-br from-[#ff3366] to-[#ff1a4d] hover:-translate-y-0.5 text-white rounded-xl p-4 font-bold flex flex-col items-center justify-center gap-1 w-full transition"
           >
             <div className="flex items-center gap-2 text-xl">
               <Bell size={24} fill="currentColor" />
@@ -214,12 +210,12 @@ export default function Dashboard() {
           </Link>
         </div>
         <div>
-          <div className="avatar-group h-[40px] flex items-center text-sm text-secondary">
+          <div className="avatar-group h-10 flex items-center text-sm text-secondary">
             {userData.contacts.length > 0 ? (
               userData.contacts.slice(0, 5).map((c, i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 rounded-full bg-[#ff3366] flex items-center justify-center text-white font-bold border-2 border-[#12101a] -ml-2 first:ml-0 shadow-lg"
+                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold border-2 border-[#12101a] -ml-2 first:ml-0 shadow-lg"
                 >
                   {c.initials}
                 </div>
@@ -354,7 +350,7 @@ export default function Dashboard() {
                 <Marker position={userData.coordinates} icon={userIcon} />
               </>
             ) : (
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1000] bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold border border-white/10 flex items-center gap-2 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1000 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold border border-white/10 flex items-center gap-2 pointer-events-none">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                 Finding your location...
               </div>
@@ -376,12 +372,12 @@ export default function Dashboard() {
 
         <div className="flex-1 flex flex-col">
           {userData.activities.length === 0 ? (
-            <div className="flex-1 flex flex-col items-center justify-center text-secondary h-full min-h-[150px]">
+            <div className="flex-1 flex flex-col items-center justify-center text-secondary h-full min-h-37.5">
               <Activity size={32} className="mb-3 opacity-50" />
               <p className="text-sm font-medium text-white mb-1">
                 No recent activity
               </p>
-              <p className="text-xs text-center max-w-[200px]">
+              <p className="text-xs text-center max-w-50">
                 Check-ins, trips, and alerts will appear here.
               </p>
             </div>

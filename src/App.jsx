@@ -8,13 +8,11 @@ import {
   Navigate,
 } from "react-router-dom";
 import {
-  Shield,
   Home,
   MapPin,
   Navigation,
   Users,
   Bell,
-  ChevronDown,
   AlertTriangle,
   LogOut,
 } from "lucide-react";
@@ -103,7 +101,7 @@ function App() {
         <header className="app-header">
           <div className="flex items-center">
             <Link to="/dashboard" className="app-title text-2xl tracking-tight">
-              <Shield size={28} fill="currentColor" />
+              <img src="/vite.svg" alt="SafeHer Logo" className="w-7 h-7" />
               SafeHer
             </Link>
             <span className="app-subtitle hidden md:block">
@@ -118,7 +116,7 @@ function App() {
               <>
                 <Link
                   to="/sos"
-                  className="bg-[#ff3366] hover:bg-[#ff5c85] text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition shadow-[0_0_15px_rgba(255,51,102,0.4)] mr-2"
+                  className="bg-primary hover:bg-primary-light text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition mr-2"
                 >
                   <AlertTriangle size={16} /> SOS
                 </Link>
@@ -126,7 +124,7 @@ function App() {
                   <Bell size={20} />
                 </button>
                 <div className="flex items-center gap-3 ml-2">
-                  <div className="w-8 h-8 rounded-full bg-purple flex items-center justify-center text-white font-bold text-sm shadow-[0_0_10px_rgba(139,92,246,0.5)]">
+                  <div className="w-8 h-8 rounded-full bg-purple flex items-center justify-center text-white font-bold text-sm">
                     {initial}
                   </div>
                   <span className="text-sm font-medium hidden sm:block text-white">

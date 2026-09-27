@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { User, Shield, MapPin, Bell, ChevronRight, Save } from "lucide-react";
+import { User, ShieldAlert, MapPin, Bell, ChevronRight, Save } from "lucide-react";
 
 export default function Profile() {
   const [profile, setProfile] = useState({
